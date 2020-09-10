@@ -36,7 +36,7 @@ setup(
     keywords=['django', 'cas', 'cas2', 'cas3', 'client', 'sso', 'single sign-on', 'Central Authentication Service', 'authentication', 'auth'],
     license='BSD',
     long_description=readme,
-    name='django-cas-ng',
+    name='django-cas-agn',
     packages=['django_cas_ng', 'django_cas_ng.management', 'django_cas_ng.management.commands', 'django_cas_ng.migrations'],
     package_data={
         'django_cas_ng': [
@@ -45,8 +45,8 @@ setup(
         ],
     },
     url='https://djangocas.dev',
-    download_url='https://github.com/django-cas-ng/django-cas-ng/releases',
-    version='4.1.1',
+    download_url='https://github.com/agn-7/django-cas-agn/releases',
+    version='4.1.2',
     python_requires=">=3.5",
     install_requires=[
         'Django>=2.0',
