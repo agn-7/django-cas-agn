@@ -15,6 +15,11 @@ from django.contrib.sessions.backends.base import SessionBase
 from django.shortcuts import resolve_url
 
 
+class RedirectException(Exception):
+    """Signals that a redirect could not be handled."""
+    pass
+
+
 def get_protocol(request):
     """Returns 'http' or 'https' for the request protocol"""
     if request.is_secure():
@@ -86,7 +91,7 @@ def get_cas_client(service_url=None, request=None):
             "environment."
         )
 
-    return CASClient(
+    kwargs = dict(
         service_url=service_url,
         version=django_settings.CAS_VERSION,
         server_url=server_url,
@@ -96,6 +101,10 @@ def get_cas_client(service_url=None, request=None):
         proxy_callback=django_settings.CAS_PROXY_CALLBACK,
         verify_ssl_certificate=django_settings.CAS_VERIFY_SSL_CERTIFICATE
     )
+    if django_settings.CAS_VERSION == 1:
+        kwargs.pop('proxy_callback')
+
+    return CASClient(**kwargs)
 
 
 def get_user_from_session(session: SessionBase) -> Union[User, AnonymousUser]:
