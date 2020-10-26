@@ -46,7 +46,7 @@ setup(
     },
     url='https://djangocas.dev',
     download_url='https://github.com/agn-7/django-cas-agn/releases',
-    version='4.1.2',
+    version='4.1.3',
     python_requires=">=3.5",
     install_requires=[
         'Django>=2.0',
